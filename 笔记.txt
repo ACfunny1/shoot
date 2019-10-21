@@ -17,3 +17,21 @@
 进度条（领取金币）
 6.那个圆圈的图片，type选择填充，Fill Type选择扇形，下面的中心点属性也设置为0.5,0.5
 给这个图片添加一个组件ProgressBar（进度条），Bar Sprite拖入这个图片节点
+
+------------------------------------------------------------------------------------
+2019年10月21日
+
+1.node.runAction()动作执行
+cc.sequence()顺序执行动作
+repeat()重复多少次
+例如runAction(cc.sequence().repeat(10))
+
+用到cc.fadeOut,cc.fadeIn,cc.delayTime使logo处的小图标有动画效果
+
+2.动作衔接
+用到cc.callFunc(abc())就是用来执行函数的，用来确定一个动画播放完毕，可以用在cc.sequence(cc.callFunc().bind(this)),需要bind(this)
+
+进度条动画用到cc.scaleTo()
+
+cc.sequence是顺序执行并不能同步执行所有动作
+使用cc.spawn()可以同步执行动作
