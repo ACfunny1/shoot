@@ -36,6 +36,7 @@ cc.Class({
             )
 
         this.fireFlicker.runAction(flicker)
+        cc.log(123)
     },
     
     start () {
@@ -43,7 +44,7 @@ cc.Class({
     },
 
     randomNum (lower,upper) {
-        return Math.floor(Math.random() * (upper - lower));
+        return Math.floor(Math.random()*(upper - lower + 1)) + lower;
     },
 
     barAction () {
@@ -75,7 +76,7 @@ cc.Class({
                 cc.callFunc(this.allFlicker(this.BDcircle1),this),
                 cc.callFunc(this.BDshake(this.bingDu1),this)
             )
-            
+
             //cc.callFunc(this.BDshake(this.bingDu1),this)
             )
 
@@ -107,13 +108,14 @@ cc.Class({
 
     BDshake (target) {
         //x上限275，下限425 y上80，下230
-        var cx = this.randomNum(1,10)
-        var cy = this.randomNum(1,10)
+        var cx = this.randomNum(354,500)
+        var cy = this.randomNum(141,260)
+        var a  = target.position
         var shanke = cc.sequence(
-            cc.moveTo(0.5,cc.v2(275,80)),
+            cc.moveTo(0.5,cc.v2(cx,cy)),
             cc.delayTime(1),
             cc.log('结束'),
-            cc.moveTo(0.5,cc.v2(425,230)),
+            cc.log(target.position)
         )
         target.runAction(shanke)
     },
