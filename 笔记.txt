@@ -1,3 +1,5 @@
+git@github.com:ACfunny1/shoot.git
+
 1.设置按钮交互
 
 2.创建关卡节点LevelDesign,根据效果图拼接资源（678，滑动射击那点东西）
