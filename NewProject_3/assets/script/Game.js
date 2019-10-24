@@ -12,18 +12,22 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        getLogoScript: cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
-
-    start () {
+    onLoad() {
 
     },
-    randomNum (lower,upper) {
-        return Math.floor(Math.random() * (upper - lower));
+
+    start() {
+
     },
+
+    stay() {
+
+
+    }
     // update (dt) {},
 });
