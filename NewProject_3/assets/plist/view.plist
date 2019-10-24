@@ -4,6 +4,71 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>arrUp.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{104,432},{92,71}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{92,71}}</string>
+                <key>sourceSize</key>
+                <string>{92,71}</string>
+            </dict>
+            <key>bB_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{237,2},{64,176}}</string>
+                <key>offset</key>
+                <string>{0,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{10,8},{64,176}}</string>
+                <key>sourceSize</key>
+                <string>{84,184}</string>
+            </dict>
+            <key>bR_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{186,226},{64,176}}</string>
+                <key>offset</key>
+                <string>{0,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{10,8},{64,176}}</string>
+                <key>sourceSize</key>
+                <string>{84,184}</string>
+            </dict>
+            <key>bY_1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{171,2},{64,176}}</string>
+                <key>offset</key>
+                <string>{0,-4}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{10,8},{64,176}}</string>
+                <key>sourceSize</key>
+                <string>{84,184}</string>
+            </dict>
+            <key>blackBg.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{403,2},{62,84}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{62,84}}</string>
+                <key>sourceSize</key>
+                <string>{62,84}</string>
+            </dict>
             <key>bor1.png</key>
             <dict>
                 <key>frame</key>
@@ -20,7 +85,7 @@
             <key>bor2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{2,432},{72,26}}</string>
+                <string>{{76,432},{72,26}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +98,7 @@
             <key>boss.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{213,122},{87,83}}</string>
+                <string>{{198,404},{87,83}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +111,7 @@
             <key>coin.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{186,214},{118,118}}</string>
+                <string>{{374,66},{118,118}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +124,7 @@
             <key>coinLight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{171,2},{118,118}}</string>
+                <string>{{283,390},{118,118}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,14 +134,40 @@
                 <key>sourceSize</key>
                 <string>{118,118}</string>
             </dict>
-            <key>ictili1.png</key>
+            <key>icmain.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{89,432},{59,67}}</string>
+                <string>{{2,432},{72,74}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{72,74}}</string>
+                <key>sourceSize</key>
+                <string>{72,74}</string>
+            </dict>
+            <key>icon_0.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{252,222},{166,141}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{166,141}}</string>
+                <key>sourceSize</key>
+                <string>{166,141}</string>
+            </dict>
+            <key>ictili1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{303,115},{59,67}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{59,67}}</string>
                 <key>sourceSize</key>
@@ -85,11 +176,11 @@
             <key>iczuan1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{30,432},{69,57}}</string>
+                <string>{{303,56},{69,57}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{69,57}}</string>
                 <key>sourceSize</key>
@@ -98,7 +189,7 @@
             <key>plus.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{183,432},{52,52}}</string>
+                <string>{{346,2},{52,52}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,11 +202,11 @@
             <key>tl2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{171,122},{90,40}}</string>
+                <string>{{197,180},{90,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{90,40}}</string>
                 <key>sourceSize</key>
@@ -137,11 +228,11 @@
             <key>z4.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{183,486},{24,44}}</string>
+                <string>{{171,180},{24,44}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{24,44}}</string>
                 <key>sourceSize</key>
@@ -150,11 +241,11 @@
             <key>z5.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,432},{31,55}}</string>
+                <string>{{289,180},{31,55}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{31,55}}</string>
                 <key>sourceSize</key>
@@ -170,7 +261,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:853adfc5e9c735a2d91ac8ad719a7e84$</string>
+            <string>$TexturePacker:SmartUpdate:e4a8f991cbc9c07ed51d1059f85b20f5$</string>
             <key>textureFileName</key>
             <string>view.png</string>
         </dict>
