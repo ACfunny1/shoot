@@ -39,11 +39,13 @@ cc.Class({
 
             var act = cc.sequence(
                 cc.delayTime(0.2),
-                cc.moveBy(0.5, cc.v2(0, -20)),
-                cc.moveBy(0.5, cc.v2(0, 500))
+                cc.moveBy(0.6, cc.v2(0, -40)).easing(cc.easeExponentialInOut()),
+                cc.moveBy(0.2, cc.v2(0, 600)).easing(cc.easeExponentialInOut()),
             )
-
             this.logo.runAction(act)
+        }
+        if (data === 'resetLogoAnim') {
+            this.logo.setPosition(cc.v2(-21.9, 451.3))
         }
     },
 
