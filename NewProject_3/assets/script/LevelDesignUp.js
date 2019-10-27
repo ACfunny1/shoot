@@ -13,6 +13,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        //最两边的两个关卡节点透明
         this.LevelNode[4].opacity = 0
         this.LevelNode[0].opacity = 0
         this.get()
@@ -29,6 +30,7 @@ cc.Class({
     start() {
 
     },
+    //获取每个关卡节点的position，scale，opacity
     get(node) {
         for (var i = 0; i < this.LevelNode.length; i++) {
             this.nodePos[i] = this.LevelNode[i].position
@@ -38,10 +40,9 @@ cc.Class({
         cc.log(this.nodePos)
         cc.log(this.nodeScale)
         cc.log(this.nodeOpacity)
-        cc.log('新的' + this.nodePos[0])
     },
 
-
+    //点击升级控制关卡数字和boss图标显示
     numAndBoss() {
         for (var i = 0; i < this.LevelNum.length; i++) {
             this.LevelNum[i].getComponents('cc.Label')[0].string =
@@ -56,7 +57,7 @@ cc.Class({
             }
         }
     },
-
+    //点击升级触发的事件
     LevelUp() {
         var nodeAct1 = cc.sequence(
             cc.spawn(
@@ -95,29 +96,10 @@ cc.Class({
             cc.moveTo(0, this.nodePos[4])
         )
 
-
-        /*var arrowAct1 = cc.sequence(
-            cc.spawn(
-                cc.moveBy(0.5,cc.v2(-120,0)),
-                cc.scaleTo(0.5,0.9),
-                cc.fadeIn(0)
-            ),
-            this.reset(this.LevelNode[5],5,5)
-        )
-
-        var arrowAct2 = cc.sequence(
-            cc.spawn(
-                cc.moveBy(0.5,cc.v2(-117,0)),
-                cc.scaleTo(0.5,0.5),
-            ),
-            this.reset(this.LevelNode[6],6,6)
-        )*/
         this.LevelNode[1].runAction(nodeAct1)
         this.LevelNode[2].runAction(nodeAct2)
         this.LevelNode[3].runAction(nodeAct3)
         this.LevelNode[4].runAction(nodeAct4)
-        /*this.LevelNode[5].runAction(arrowAct1)
-        this.LevelNode[6].runAction(arrowAct2)*/
     }
     // update (dt) {},
 });
