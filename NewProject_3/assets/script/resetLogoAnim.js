@@ -2,7 +2,13 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        logo: cc.Node
+        logo: cc.Node,
+        setting: cc.Node,
+        coin: cc.Node,
+        bottom: cc.Node,
+        bg: cc.Node,
+        level: cc.Node,
+        shotTip: cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -20,6 +26,7 @@ cc.Class({
             this.reset(logoNode.bingDu2)
             this.reset(logoNode.BDcircle1)
             this.reset(logoNode.BDcircle2)
+            this.reset(logoNode.shotTip)
             /*var a = logoNode.bingDu1.getPosition()
             var b = logoNode.bingDu2.getPosition()
             cc.log('a:' + a + 'b:' + b)
@@ -37,15 +44,60 @@ cc.Class({
             cc.log(a)
             Vec2 { x: -21.9, y: 451.3 }*/
 
-            var act = cc.sequence(
+            var logoOutAct = cc.sequence(
                 cc.delayTime(0.2),
                 cc.moveBy(0.6, cc.v2(0, -40)).easing(cc.easeExponentialInOut()),
                 cc.moveBy(0.2, cc.v2(0, 600)).easing(cc.easeExponentialInOut()),
             )
-            this.logo.runAction(act)
+            var setOutAct = cc.sequence(
+                cc.delayTime(0.8),
+                cc.moveBy(0.6, cc.v2(-75, 0)).easing(cc.easeExponentialInOut()),
+            )
+            var coinOutAct = cc.sequence(
+                cc.delayTime(0.8),
+                cc.moveBy(0.6, cc.v2(155, 0)).easing(cc.easeExponentialInOut()),
+            )
+            var bottomOutAct = cc.sequence(
+                cc.delayTime(0.8),
+                cc.moveBy(0.6, cc.v2(0, -141)).easing(cc.easeExponentialInOut()),
+            )
+            var bgOutAct = cc.sequence(
+                cc.delayTime(0.8),
+                cc.scaleTo(0.6, 1)
+            )
+            var levelOutAct = cc.sequence(
+                cc.delayTime(0.8),
+                cc.spawn(
+                    cc.moveBy(0.6, cc.v2(0, 511)),
+                    cc.scaleTo(0.6, 0.5)
+                )
+            )
+            var shotTipOutAct = cc.sequence(
+                cc.delayTime(0.8),
+                cc.callFunc(function () {
+                    this.shotTip.active = false
+                }, this)
+            )
+
+            this.logo.runAction(logoOutAct)
+            this.setting.runAction(setOutAct)
+            this.coin.runAction(coinOutAct)
+            this.bottom.runAction(bottomOutAct)
+            this.bg.runAction(bgOutAct)
+            this.level.runAction(levelOutAct)
+            this.shotTip.runAction(shotTipOutAct)
         }
         if (data === 'resetLogoAnim') {
             this.logo.setPosition(cc.v2(-21.9, 451.3))
+            this.setting.setPosition(cc.v2(-435, 402))
+            this.coin.setPosition(cc.v2(368, -1))
+            this.bottom.setPosition(cc.v2(0, -737))
+            this.bg.setScale(cc.v2(1.2, 1.2))
+
+            this.level.setPosition(cc.v2(-56, 67))
+            this.level.setScale(cc.v2(1, 1))
+
+            this.shotTip.active = true
         }
     },
 

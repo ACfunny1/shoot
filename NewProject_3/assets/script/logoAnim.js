@@ -10,6 +10,7 @@ cc.Class({
         BDuWeiba2: cc.Node,
         BDcircle1: cc.Node,
         BDcircle2: cc.Node,
+        shotTip: cc.Node,
         XGT: cc.Node//效果图
     },
 
@@ -38,6 +39,7 @@ cc.Class({
             cc.callFunc(this.barAction, this),
         )
         this.fireFlicker.runAction(flicker)
+        this.shotTipAct()
     },
 
     barAction() {//火焰进度条
@@ -53,11 +55,11 @@ cc.Class({
     bingDuAct() {//病毒的动画
         //第一部分弹出动画
         var act = cc.spawn(
-            cc.moveTo(0.1, cc.v2(420, 191)),
+            cc.moveTo(0.1, cc.v2(280, 158)),//379,158   420,191
             cc.scaleTo(0.2, 1, 1)
         )
         var act2 = cc.spawn(
-            cc.moveTo(0.1, cc.v2(439, -23.8)),
+            cc.moveTo(0.1, cc.v2(386, -22)),//386,-22 439,-23.8
             cc.scaleTo(0.2, 1, 1),
         )
         //第二部分动画尾巴消失，闪烁晃动
@@ -117,8 +119,19 @@ cc.Class({
         target.runAction(shanke)
     },
 
-    ok() {
-        cc.log('ok')
+    //“滑动射击病毒”动画
+    shotTipAct() {
+        var act = cc.repeatForever(
+            cc.sequence(
+                cc.rotateTo(0.3, -15),
+                cc.rotateTo(0.3, 15),
+                cc.rotateTo(0.3, 0),
+                cc.delayTime(0.8)
+            )
+        )
+
+
+        this.shotTip.runAction(act)
     }
     /*update (dt) {
         
