@@ -25,6 +25,8 @@ cc.Class({
             }
         }
 
+        gameC.getCoin()
+
     },
 
     start() {

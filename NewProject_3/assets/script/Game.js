@@ -18,16 +18,15 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
+        gameC = this
     },
 
     start() {
 
     },
 
-    stay() {
-
-
+    getCoin() {
+        cc.log('获取金币')
     }
     // update (dt) {},
 });
