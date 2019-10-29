@@ -116,6 +116,7 @@ this.node.addChild(prefab)
 
 
 （10）.创建插件脚本，window.gameC=null为全局变量，在放置功能函数的地方gameC = this导入，在使用的地方用gameC.getCoin()就可以使用啦
+！！！注意：如果找不到插件变量，可能是onload的顺序造成
 
 （11）.对象池的应用学习
 

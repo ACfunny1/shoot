@@ -13,6 +13,10 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        logoAnimCtl = this
+    },
+
+    PreSet() {
         //最两边的两个关卡节点透明
         this.LevelNode[4].opacity = 0
         this.LevelNode[0].opacity = 0
@@ -24,14 +28,8 @@ cc.Class({
                 this.LevelNode[i].opacity = 0
             }
         }
-
-        gameC.getCoin()
-
     },
 
-    start() {
-
-    },
     //获取每个关卡节点的position，scale，opacity
     get(node) {
         for (var i = 0; i < this.LevelNode.length; i++) {

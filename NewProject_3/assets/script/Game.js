@@ -12,21 +12,22 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        getLogoScript: cc.Node
+
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        gameC = this
+        logoAnimCtl.PreSet()
+        airPlaneAnimCtl.log()
+        airPlaneAnimCtl.airPlaneAnim()
+        airPlaneAnimCtl.airHeadAnim()
     },
 
     start() {
 
     },
 
-    getCoin() {
-        cc.log('获取金币')
-    }
+
     // update (dt) {},
 });
