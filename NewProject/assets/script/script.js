@@ -24,17 +24,21 @@ cc.Class({
         let node = null
         if (this.pool.size() > 0) {
             node = this.pool.get()
+            //cc.log(this.pool)
         } else {
             cc.log('池子里没有啦')
             return null
         }
         node.parent = this.parentNode
         gamec.click()
+        cc.log(this.parentNode.children)
     },
 
     killNode() {
-        this.pool.put(gamec.lantianNode)
-        //cc.log(gamec.lantianNode)
+        for (var i = 0; i < 5; i++) {
+            //每次回收数字的第一个
+            this.pool.put(this.parentNode.children[0])
+        }
     }
 
     // update (dt) {},
