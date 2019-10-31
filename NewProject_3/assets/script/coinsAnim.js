@@ -6,7 +6,8 @@ cc.Class({
         point: [],//结果
         coinNode: cc.Prefab,
         parent: cc.Node,
-        cnode: cc.Node
+        cnode: cc.Node,
+        jinbi: cc.Prefab,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -16,6 +17,7 @@ cc.Class({
         cc.log('元周节点')
         cc.log(this.point)
         this.pool = new cc.NodePool()
+
     },
 
     start() {
@@ -61,27 +63,31 @@ cc.Class({
         var act = cc.sequence(
             cc.callFunc(function () {
                 for (var i = 0; i < this.coinCount; i++) {
-                    var jinbi = cc.instantiate(this.coinNode)
-                    this.pool.put(jinbi)
-                    this.createNode(jinbi, this.point[i].x, this.point[i].y)
+                    this.jinbi = cc.instantiate(this.coinNode)
+                    this.pool.put(this.jinbi)
+                    this.createNode(this.jinbi, this.point[i].x, this.point[i].y)
                     /*cc.log('创建好了')
                     cc.log(this.pool)*/
 
                     //移动至左上角的动画
                     var moveAct = cc.sequence(
-                        cc.delayTime(0.1),
                         cc.moveTo(0.5, cc.v2(-758.6, 730.2)),
                         cc.callFunc(function () {
-                            for (var i = 0; i < this.coinCount; i++) {
-                                //cc.log('回收入对象池')
-                                this.pool.put(this.parent.children[0])
-                            }
+                            cc.log('回收入对象池')
+                            //
                         }, this)
                     )
-                    jinbi.runAction(moveAct)
+
+                    this.jinbi.runAction(moveAct)
                 }
             }, this),
             cc.delayTime(0.2),
+            //youwenti----------------------------------------------
+            cc.callFunc(function () {
+                for (var i = 0; i < this.coinCount; i++) {
+                    this.pool.put(this.parent.children[0])
+                }
+            }, this)
         )
         this.cnode.runAction(act)
         cc.log('zuizhong')
