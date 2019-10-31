@@ -39,6 +39,7 @@ cc.Class({
             //每次回收数字的第一个
             this.pool.put(this.parentNode.children[0])
         }
+        cc.log(this.pool)
     }
 
     // update (dt) {},
