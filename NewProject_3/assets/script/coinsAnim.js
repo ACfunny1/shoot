@@ -7,13 +7,13 @@ cc.Class({
         coinNode: cc.Prefab,
         parent: cc.Node,
         cnode: cc.Node,
-        jinbi: cc.Prefab,
+        topCoin: cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        this.getPoint(200, 0, 0, this.coinCount)
+        this.getPoint(400, 0, 0, this.coinCount)
         cc.log('元周节点')
         cc.log(this.point)
         this.pool = new cc.NodePool()
@@ -40,7 +40,12 @@ cc.Class({
         }
     },
 
-    createNode(node, x, y) {
+    /*node:需要复制的Prefab节点
+        x,y定义position
+        t定义每个金币moveTo目标点的差距时间
+    */
+
+    createNode(node, x, y, t) {
         var node = null
         if (this.pool.size() > 0) {
             node = this.pool.get()
@@ -51,47 +56,47 @@ cc.Class({
         }
         node.parent = this.parent
         node.position = cc.v2(x, y)
+        var moveAct = cc.sequence(
+            cc.delayTime(0.15),
+            cc.moveTo(0.5 + t, cc.v2(-758.6, 730.2)),
+            cc.callFunc(function () {
+                var act = cc.sequence(
+                    cc.scaleTo(0.2, 1.5),
+                    cc.scaleTo(0.2, 1)
+                )
+                this.topCoin.runAction(act)
+            }, this),
+            cc.callFunc(function () {
+                //回收
+                this.pool.put(this.parent.children[0])
+            }, this)
+        )
+        node.runAction(moveAct)
 
     },
 
     clickAnim() {
         //左上角金币的坐标-758.6,730.2
-
         cc.log('对象池:')
         cc.log(this.pool)
-
+        var t = 0
         var act = cc.sequence(
             cc.callFunc(function () {
                 for (var i = 0; i < this.coinCount; i++) {
-                    this.jinbi = cc.instantiate(this.coinNode)
-                    this.pool.put(this.jinbi)
-                    this.createNode(this.jinbi, this.point[i].x, this.point[i].y)
-                    /*cc.log('创建好了')
-                    cc.log(this.pool)*/
-
-                    //移动至左上角的动画
-                    var moveAct = cc.sequence(
-                        cc.moveTo(0.5, cc.v2(-758.6, 730.2)),
-                        cc.callFunc(function () {
-                            cc.log('回收入对象池')
-                            //
-                        }, this)
-                    )
-
-                    this.jinbi.runAction(moveAct)
+                    if (this.pool.size() <= 0) {
+                        var jinbi = cc.instantiate(this.coinNode)
+                        this.pool.put(jinbi)
+                    }
+                    this.createNode(jinbi, this.point[i].x + Math.floor(Math.random() * 200), this.point[i].y + Math.floor(Math.random() * 200), t)
+                    t += 0.02
                 }
             }, this),
-            cc.delayTime(0.2),
-            //youwenti----------------------------------------------
             cc.callFunc(function () {
-                for (var i = 0; i < this.coinCount; i++) {
-                    this.pool.put(this.parent.children[0])
-                }
+
             }, this)
         )
         this.cnode.runAction(act)
-        cc.log('zuizhong')
-        cc.log(this.pool)
+
     }
     // update (dt) {},
 });
