@@ -51,8 +51,6 @@ cc.Class({
         )
         this.airPlane.runAction(airPlaneAct)
     },
-    log() {
-        cc.log('插件可以使用')
-    }
+
     // update (dt) {},
 });

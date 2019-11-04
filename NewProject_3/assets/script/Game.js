@@ -19,9 +19,11 @@ cc.Class({
 
     onLoad() {
         logoAnimCtl.PreSet()
-        airPlaneAnimCtl.log()
         airPlaneAnimCtl.airPlaneAnim()
         airPlaneAnimCtl.airHeadAnim()
+        touchEventCtl.setOpacity()
+        touchEventCtl.touchStrat()
+        touchEventCtl.touchMove()
     },
 
     start() {

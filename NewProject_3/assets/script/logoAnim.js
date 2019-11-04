@@ -130,7 +130,6 @@ cc.Class({
             )
         )
 
-
         this.shotTip.runAction(act)
     }
     /*update (dt) {

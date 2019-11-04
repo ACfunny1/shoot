@@ -8,6 +8,10 @@ cc.Class({
         parent: cc.Node,
         cnode: cc.Node,
         topCoin: cc.Node,
+        coinLight: cc.Node,
+        goldNum: cc.Node,
+        beatNum: 500,
+        g: 0
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -17,10 +21,6 @@ cc.Class({
         cc.log('元周节点')
         cc.log(this.point)
         this.pool = new cc.NodePool()
-
-    },
-
-    start() {
 
     },
 
@@ -97,6 +97,21 @@ cc.Class({
         )
         this.cnode.runAction(act)
 
-    }
-    // update (dt) {},
+    },
+    update(dt) {
+        var barLenth = this.coinLight.getComponent(cc.ProgressBar)
+        var goldNum = this.goldNum.getComponent(cc.Label)
+        //每帧圆圈进度+0.005
+        barLenth.progress += 0.005
+        //转完一圈时圈圈进度置0
+        if (barLenth.progress == 1 || barLenth.progress > 1) {
+            barLenth.progress = 0
+            //每一圈加金币，超过1000时加'k'
+            goldNum.string = parseInt(this.g) + this.beatNum
+            this.g = goldNum.string
+            if (this.g > 1000) {
+                goldNum.string = this.g / 1000 + 'K'
+            }
+        }
+    },
 });
