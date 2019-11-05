@@ -40,6 +40,9 @@ cc.Class({
         logoNode.flicker()
     },
     outLogoAnim() {
+        //点击节流
+        if (gameScene == 1) return
+
         var logoNode = this.logo.getComponents('logoAnim')[0]
         //var a = this.logo.getPosition()
         //cc.log(a)
@@ -93,8 +96,11 @@ cc.Class({
         this.level.runAction(levelOutAct)
         this.shotTip.runAction(shotTipOutAct)
         this.airPlane.runAction(airPlaneAct)
+
+        gameScene = 1
     },
     resetLogoAnim() {
+
         var logoNode = this.logo.getComponents('logoAnim')[0]
         this.logo.setPosition(cc.v2(-21.9, 451.3))
         this.setting.setPosition(cc.v2(-435, 402))
@@ -109,6 +115,10 @@ cc.Class({
 
         this.airPlane.setScale(cc.v2(1, 1))
         this.airPlane.setPosition(cc.v2(0, -429))
+
+        touchEventCtl.setOpacity()
+        //游戏场景变成0
+        gameScene = 0
     },
     /*test(target, data) {
         var logoNode = this.logo.getComponents('logoAnim')[0]

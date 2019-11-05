@@ -11,12 +11,16 @@ cc.Class({
         coinLight: cc.Node,
         goldNum: cc.Node,
         beatNum: 500,
-        g: 0
+        g: 0,
+        tgNum: 0,//领取金币的金币number类型数量
+        tgStr: 0,//top的金币number类型数量
+        topCoNum: cc.Label
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        coinAnimCtl = this
         this.getPoint(400, 0, 0, this.coinCount)
         cc.log('元周节点')
         cc.log(this.point)
@@ -72,10 +76,11 @@ cc.Class({
             }, this)
         )
         node.runAction(moveAct)
-
     },
 
+    //点击领取金币的动画
     clickAnim() {
+        if (this.g <= 0) return
         //左上角金币的坐标-758.6,730.2
         cc.log('对象池:')
         cc.log(this.pool)
@@ -91,13 +96,60 @@ cc.Class({
                     t += 0.02
                 }
             }, this),
-            cc.callFunc(function () {
-
-            }, this)
+            cc.callFunc()
         )
         this.cnode.runAction(act)
-
     },
+
+    //点击领取金币的金币变化，包括左上角
+    clickEvent() {
+        var goldNum = this.goldNum.getComponent(cc.Label)
+        //var num = parseInt(goldNum.string)
+        var topNum = parseInt(this.topCoNum.string)
+        if (this.g <= 0) {
+            return
+        } else {
+            if (!this.getReg(this.topCoNum.string)) {
+                this.tg = parseInt(this.topCoNum.string)
+                this.topCoNum.string = this.tg + this.g
+                this.tg = parseInt(this.topCoNum.string)
+
+                if (this.tg >= 1000) {
+                    this.topCoNum.string = this.tg / 1000 + 'K'
+                }
+            }
+            else if (this.getReg(this.topCoNum.string)) {
+                //比如把5.12k的K取出
+                var arr = this.topCoNum.string.split('')
+                arr.pop()
+                var str = arr.join('')
+
+                this.tg = Number(str) * 1000
+                this.topCoNum.string = this.tg + this.g
+                this.tg = parseInt(this.topCoNum.string)
+
+                if (this.tg >= 1000) {
+                    this.topCoNum.string = this.tg / 1000 + 'K'
+                }
+            }
+            goldNum.string = 0
+            this.g = 0
+        }
+
+        //保存金币数据
+        gold = this.topCoNum.string
+        local.loadUserData()
+    },
+
+    getReg(num) {
+        var reg = new RegExp(/.*K/)
+        if (num.match(reg) != null) {
+            return true
+        } else {
+            return false
+        }
+    },
+
     update(dt) {
         var barLenth = this.coinLight.getComponent(cc.ProgressBar)
         var goldNum = this.goldNum.getComponent(cc.Label)
@@ -108,7 +160,7 @@ cc.Class({
             barLenth.progress = 0
             //每一圈加金币，超过1000时加'k'
             goldNum.string = parseInt(this.g) + this.beatNum
-            this.g = goldNum.string
+            this.g = parseInt(goldNum.string)
             if (this.g > 1000) {
                 goldNum.string = this.g / 1000 + 'K'
             }

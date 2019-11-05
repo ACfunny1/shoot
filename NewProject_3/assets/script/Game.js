@@ -18,17 +18,21 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        //读取保存记录，应用到金币处
+        local.getUserData()
+        coinAnimCtl.topCoNum.string = local.getUserGold()
+
         logoAnimCtl.PreSet()
         airPlaneAnimCtl.airPlaneAnim()
         airPlaneAnimCtl.airHeadAnim()
+
         touchEventCtl.setOpacity()
         touchEventCtl.touchStrat()
         touchEventCtl.touchMove()
+        touchEventCtl.touchAway()
     },
 
-    start() {
 
-    },
 
 
     // update (dt) {},

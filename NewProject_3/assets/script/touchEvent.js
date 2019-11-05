@@ -25,6 +25,13 @@ cc.Class({
     touchStrat() {
         this.blackBg.on(cc.Node.EventType.TOUCH_START, function (event) {
             resetLogoCtl.outLogoAnim()
+            this.blackBg.runAction(cc.fadeOut(0.1))
+        }, this);
+    },
+    //触摸松开事件，触发黑色遮罩
+    touchAway() {
+        this.blackBg.on(cc.Node.EventType.TOUCH_END, function (event) {
+            this.blackBg.runAction(cc.fadeIn(0.5))
         }, this);
     },
 
@@ -36,7 +43,6 @@ cc.Class({
             var pos = event.getLocation()
             var newX = pos.x - 500
             var newY = pos.y - 800
-            cc.log(newX, newY)
             airPlaneAnimCtl.airPlane.setPosition(cc.v2(newX, newY))
         }, this);
     },

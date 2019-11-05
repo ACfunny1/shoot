@@ -10,12 +10,9 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-
+        local = this
     },
 
-    start() {
-
-    },
     loadUserData() {
         var userData = {
             userGold: gold,
@@ -28,6 +25,18 @@ cc.Class({
         var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
         cc.log('读取保存记录')
         cc.log(value)
+    },
+    getUserGold() {
+        var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
+        return value.userGold
+    },
+    getUserPower() {
+        var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
+        return value.userPower
+    },
+    getUserDiamond() {
+        var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
+        return value.userDiamond
     }
     // update (dt) {},
 });
