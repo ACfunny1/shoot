@@ -3,7 +3,8 @@ cc.Class({
 
     properties: {
         airHead: [cc.Node],
-        airPlane: cc.Node
+        airPlane: cc.Node,
+        shootHead: cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -51,6 +52,16 @@ cc.Class({
         )
         this.airPlane.runAction(airPlaneAct)
     },
+
+    shootHeadAnim() {
+        var act = cc.repeatForever(
+            cc.sequence(
+                cc.scaleTo(0.1, 0.7),
+                cc.scaleTo(0.1, 1)
+            )
+        )
+        this.shootHead.runAction(act)
+    }
 
     // update (dt) {},
 });

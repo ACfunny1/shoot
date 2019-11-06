@@ -8,6 +8,8 @@ window.resetLogoCtl = null
 window.touchEventCtl = null
 //coinAnim.js,在Game.js中引用
 window.coinAnimCtl = null
+//coinAnim.js,在Game.js中引用
+window.airPlaneBulletCtl = null
 
 //LocalStorage.js,在需要保存数据的地方调用
 window.local = null
@@ -23,4 +25,5 @@ window.diamond = 0
 //游戏场景状态
 //主界面 0
 //游戏界面 1
+//暂停界面 2
 window.gameScene = 0

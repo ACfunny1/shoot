@@ -25,6 +25,8 @@ cc.Class({
         logoAnimCtl.PreSet()
         airPlaneAnimCtl.airPlaneAnim()
         airPlaneAnimCtl.airHeadAnim()
+        airPlaneAnimCtl.shootHeadAnim()
+        airPlaneAnimCtl.shootHead.active = false
 
         touchEventCtl.setOpacity()
         touchEventCtl.touchStrat()

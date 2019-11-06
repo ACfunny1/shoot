@@ -48,7 +48,6 @@ cc.Class({
         x,y定义position
         t定义每个金币moveTo目标点的差距时间
     */
-
     createNode(node, x, y, t) {
         var node = null
         if (this.pool.size() > 0) {
