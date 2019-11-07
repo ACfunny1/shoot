@@ -20,7 +20,7 @@ cc.Class({
             this.blackBg.runAction(cc.fadeOut(0.1))
             if (gameScene == 1) {
                 this.shoot = setInterval(function () {
-                    airPlaneBulletCtl.click()
+                    airPlaneBulletCtl.clickShoot(3)
                 }, airPlaneBulletCtl.bulletShootSpeed)
             }
         }, this);

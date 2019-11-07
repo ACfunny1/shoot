@@ -24,7 +24,8 @@ cc.Class({
         }
     },
 
-    createBulletNode(node) {
+    //射一列子弹的创建方法
+    createBulletNode(node, offsetX) {
         var _this = this
         var node = null
         if (this.pool.size() > 0) {
@@ -37,7 +38,7 @@ cc.Class({
         node.parent = this.parent
         var pos = this.airPlane.position
         //airPlane的坐标其实在下方的屏幕外（因为有个动画是从外面飞进来）
-        node.position = cc.v2(pos.x, pos.y + 600)
+        node.position = cc.v2(pos.x + offsetX, pos.y + 600)
 
         var act = cc.repeatForever(
             cc.moveBy(this.bulletSpeed, cc.v2(0, this.bulletDis))
@@ -47,12 +48,21 @@ cc.Class({
         setTimeout(function () {
             node.stopAction(act)
             _this.pool.put(node)
+            //node.opacity = 255
         }, this.lifeTime)
     },
-    click() {
 
-        this.createBulletNode(this.bullet)
-        cc.log(this.pool)
+    //bullteCount控制子弹列数，数字几就是几列
+    clickShoot(bulletCount) {
+        if (bulletCount == 1) {
+            this.createBulletNode(this.bullet)
+        }
+        if (bulletCount == 3) {
+            this.createBulletNode(this.bullet, -30)
+            this.createBulletNode(this.bullet, 0)
+            this.createBulletNode(this.bullet, +30)
+        }
+
     },
 
     update(dt) {
