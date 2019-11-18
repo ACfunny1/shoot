@@ -23,20 +23,30 @@ cc.Class({
     },
     getUserData() {
         var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
+        this.init(value)
         cc.log('读取保存记录')
         cc.log(value)
     },
     getUserGold() {
         var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
+        this.init(value)
         return value.userGold
     },
     getUserPower() {
         var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
+        this.init(value)
         return value.userPower
     },
     getUserDiamond() {
         var value = JSON.parse(cc.sys.localStorage.getItem('userData'))
+        this.init(value)
         return value.userDiamond
+    },
+
+    //如果没有保存记录就初始化，保存一下
+    init(value) {
+        if (value == null) {
+            local.loadUserData()
+        }
     }
-    // update (dt) {},
 });

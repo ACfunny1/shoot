@@ -3,7 +3,7 @@ cc.Class({
 
     properties: {
         coinCount: 10,
-        point: [],//结果
+        point: [], //结果
         coinNode: cc.Prefab,
         parent: cc.Node,
         cnode: cc.Node,
@@ -12,8 +12,8 @@ cc.Class({
         goldNum: cc.Node,
         beatNum: 500,
         g: 0,
-        tgNum: 0,//领取金币的金币number类型数量
-        tgStr: 0,//top的金币number类型数量
+        tgNum: 0, //领取金币的金币number类型数量
+        tgStr: 0, //top的金币number类型数量
         topCoNum: cc.Label
     },
 
@@ -30,17 +30,20 @@ cc.Class({
 
     getPoint(r, ox, oy, count) {
         /*
-    * 求圆周上等分点的坐标
-    * ox,oy为圆心坐标
-    * r为半径
-    * count为等分个数
-    */
+         * 求圆周上等分点的坐标
+         * ox,oy为圆心坐标
+         * r为半径
+         * count为等分个数
+         */
         var radians = (Math.PI / 180) * Math.round(360 / count), //弧度
             i = 0;
         for (; i < count; i++) {
             var x = ox + r * Math.sin(radians * i),
                 y = oy + r * Math.cos(radians * i);
-            this.point.unshift({ x: x, y: y }); //为保持数据顺时针
+            this.point.unshift({
+                x: x,
+                y: y
+            }); //为保持数据顺时针
         }
     },
 
@@ -116,8 +119,7 @@ cc.Class({
                 if (this.tg >= 1000) {
                     this.topCoNum.string = this.tg / 1000 + 'K'
                 }
-            }
-            else if (this.getReg(this.topCoNum.string)) {
+            } else if (this.getReg(this.topCoNum.string)) {
                 //比如把5.12k的K取出
                 var arr = this.topCoNum.string.split('')
                 arr.pop()

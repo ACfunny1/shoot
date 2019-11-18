@@ -9,7 +9,8 @@ cc.Class({
         bg: cc.Node,
         level: cc.Node,
         shotTip: cc.Node,
-        airPlane: cc.Node
+        airPlane: cc.Node,
+        Hp: cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -41,7 +42,12 @@ cc.Class({
     },
     outLogoAnim() {
         //点击节流
-        if (gameScene == 1) return
+        if (gameScene == 1) {
+            return
+        } else if (gameScene == 2) {
+            gameScene = 1
+            return
+        }
         this.ComponentOutAnim()
         gameScene = 1
         //进入游戏，显示射击头
@@ -65,6 +71,8 @@ cc.Class({
         this.airPlane.setPosition(cc.v2(0, -429))
 
         touchEventCtl.setOpacity()
+        //初始界面的HP变透明
+        this.Hp.opacity = 0
         //游戏场景变成0
         gameScene = 0
         //非游戏场景，不显示射击头
@@ -118,6 +126,11 @@ cc.Class({
             cc.scaleTo(0.8, 0.8)
         )
 
+        var monsterHpAct = cc.sequence(
+            cc.delayTime(0.8),
+            cc.fadeIn(0.8)
+        )
+
         this.logo.runAction(logoOutAct)
         this.setting.runAction(setOutAct)
         this.coin.runAction(coinOutAct)
@@ -126,6 +139,7 @@ cc.Class({
         this.level.runAction(levelOutAct)
         this.shotTip.runAction(shotTipOutAct)
         this.airPlane.runAction(airPlaneAct)
+        this.Hp.runAction(monsterHpAct)
     },
 
     //初始化（停止动画）
@@ -135,5 +149,7 @@ cc.Class({
         node.opacity = 255
     },
 
-
+    /*update(dt) {
+        cc.log(gameScene)
+    }*/
 });

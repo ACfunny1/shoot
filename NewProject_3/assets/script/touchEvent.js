@@ -28,8 +28,8 @@ cc.Class({
     //触摸松开事件，触发黑色遮罩
     touchAway() {
         this.blackBg.on(cc.Node.EventType.TOUCH_END, function (event) {
-            this.blackBg.runAction(cc.fadeIn(0.5))
             gameScene = 2
+            this.blackBg.runAction(cc.fadeIn(0.5))
             clearInterval(this.shoot)
         }, this);
     },

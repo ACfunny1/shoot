@@ -32,6 +32,8 @@ cc.Class({
         touchEventCtl.touchStrat()
         touchEventCtl.touchMove()
         touchEventCtl.touchAway()
+
+        resetLogoCtl.Hp.opacity = 0
     },
 
 
