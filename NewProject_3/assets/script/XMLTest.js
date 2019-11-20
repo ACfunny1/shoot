@@ -9,16 +9,40 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
-        var a = this.xml("GET", 'https://easy-mock.com/mock/5d4051f1a2727f0f8a090aad/example/getType', true)
-        cc.log('打印')
-        cc.log(a)
+
     },
-    xml(type, url, l) {
+    xml() {
+        var obj = {
+            name: 'nancy',
+            age: 25
+        }
+
         var xhr = new XMLHttpRequest()
-        xhr.open(type, url, l);
-        xhr.send();
-        return xhr.responseText
+        xhr.open('post', 'http://localhost:2000/heroAdd', true)
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                    //成功了
+                    console.log(xhr.responseText)
+                } else {
+                    console.log('服务器异常')
+                }
+            }
+        }
+        xhr.send(this.array(obj))
     },
 
+
+    array(data) {
+        var arr = []
+        var newData
+        for (var index in data) {
+            var str = index + '=' + data[index]
+            arr.push(str)
+        }
+
+        newData = arr.join("&")
+        return newData
+    }
     // update (dt) {},
 });
